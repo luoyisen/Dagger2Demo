@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.i.dagger2demo.model.GithubRepo;
@@ -26,9 +25,6 @@ import butterknife.ButterKnife;
 public class RepoListItem extends FrameLayout {
 
     private final Picasso picasso;
-
-    @BindView(R.id.user_avatar)
-    ImageView avatarImage;
 
     @BindView(R.id.repo_name)
     TextView name;
@@ -70,8 +66,8 @@ public class RepoListItem extends FrameLayout {
         updatedAt.setText(getResources()
                 .getString(R.string.last_pushed, DATE_TIME_FORMATTER.print(githubRepo.updatedAt)));// TODO: 2017/9/25  
 
-        picasso.load(githubRepo.owner.avatarUrl)
-                .placeholder(R.drawable.ic_person_black_24dp)
-                .into(avatarImage);
+//        picasso.load(githubRepo.owner.avatarUrl)
+//                .placeholder(R.drawable.ic_person_black_24dp)
+//                .into(avatarImage);
     }
 }

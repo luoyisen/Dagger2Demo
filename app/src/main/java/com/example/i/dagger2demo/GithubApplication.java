@@ -16,23 +16,21 @@ import timber.log.Timber;
  */
 
 public class GithubApplication extends Application {
-
     private GithubApplicationComponent component;
 
     public static GithubApplication get(Activity activity) {
         return (GithubApplication) activity.getApplication();
     }
 
-    private GithubService githubService;
+    public GithubService githubService;
 
-    private Picasso picasso;
+    public Picasso picasso;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
         Timber.plant(new Timber.DebugTree());
-
         component = DaggerGithubApplicationComponent.builder()
                 .contextModule(new ContextModule(this))
                 .build();

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dagger2Demo</string>
     <string name="last_pushed">last pushed %s</string>
+    <string name="no_such_user">No Such User</string>
 </resources>

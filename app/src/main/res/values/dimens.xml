@@ -2,5 +2,5 @@
 <resources>
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="there">3dp</dimen>
-    <dimen name="dimen_10dp">10dp</dimen>
+    <dimen name="dimen_10dp">8dp</dimen>
 </resources>

@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.i.dagger2demo.component.DaggerMainActivityComponent;
@@ -43,7 +44,10 @@ public class MainActivity extends Activity {
     ImageView search;
     @BindView(R.id.emptyview)
     RelativeLayout emptyview;
-
+    @BindView(R.id.chinawall)
+    ImageView chinawall;
+    @BindView(R.id.nosuchuser)
+    TextView nosuchuser;
     @Inject
     GithubService githubService;
     @Inject
@@ -101,21 +105,21 @@ public class MainActivity extends Activity {
             @Override
             public void onResponse(Call<List<GithubRepo>> call, Response<List<GithubRepo>> response) {
                 if (response.body() != null) {
-                    if (listView.getVisibility() == View.GONE) {
-                        listView.setVisibility(View.VISIBLE);
-                        emptyview.setVisibility(View.GONE);
-
-                    }
+                    goneAll();
+                    listView.setVisibility(View.VISIBLE);
                     reposAdapter.swapData(response.body());
                 } else {
-                    listView.setVisibility(View.GONE);
+                    goneAll();
                     emptyview.setVisibility(View.VISIBLE);
+                    nosuchuser.setVisibility(View.VISIBLE);
                 }
             }
 
             @Override
             public void onFailure(Call<List<GithubRepo>> call, Throwable t) {
-                Toast.makeText(MainActivity.this, "Network Error", Toast.LENGTH_SHORT).show();
+                goneAll();
+                emptyview.setVisibility(View.VISIBLE);
+                chinawall.setVisibility(View.VISIBLE);
             }
         });
 
@@ -127,8 +131,9 @@ public class MainActivity extends Activity {
                     picasso.load(response.body().avatarUrl)
                             .placeholder(R.drawable.ic_person_black_24dp)
                             .into(avatar);
+                } else {
+                    avatar.setImageResource(R.drawable.shape_searchview);
                 }
-
             }
 
             @Override
@@ -144,5 +149,12 @@ public class MainActivity extends Activity {
         if (reposCall != null) {
             reposCall.cancel();
         }
+    }
+
+    public void goneAll() {
+        listView.setVisibility(View.GONE);
+        chinawall.setVisibility(View.GONE);
+        nosuchuser.setVisibility(View.GONE);
+        emptyview.setVisibility(View.GONE);
     }
 }

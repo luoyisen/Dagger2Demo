@@ -24,7 +24,7 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_centerVertical="true"
-                android:layout_marginStart="@dimen/dimen_5dp"
+                android:layout_marginStart="@dimen/dimen_10dp"
                 android:src="@drawable/shape_searchview" />
 
             <android.support.v7.widget.SearchView
@@ -54,27 +54,29 @@
         android:id="@+id/emptyview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/chinawall"
             android:layout_width="300dp"
             android:layout_height="300dp"
             android:layout_centerInParent="true"
-            android:src="@mipmap/empty_view" />
+            android:src="@mipmap/empty_view"
+            android:visibility="gone"/>
 
         <TextView
+            android:id="@+id/nosuchuser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/chinawall"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_centerInParent="true"
             android:text="@string/no_such_user"
             android:fontFamily="sans-serif-condensed"
             android:textColor="@android:color/white"
             android:textSize="25sp"
             android:shadowColor="@android:color/black"
-            android:shadowRadius="9"/>
+            android:shadowRadius="9"
+            android:visibility="gone"/>
     </RelativeLayout>
 
     <ListView
